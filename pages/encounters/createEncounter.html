@@ -1,0 +1,200 @@
+<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper" ng-class="theme.navBarColor">
+			<a href="#!" class="brand-logo valign-wrapper">
+				<img src="./assets/logoLunch.png">
+			</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+
+	        	<li ng-repeat="(index, itemMenu) in menu" ng-class="menuClasses[index]"><a ng-click="goto(itemMenu.linkTo)"><i class="material-icons left">{{itemMenu.icon}}</i>{{itemMenu.name}}</a></li>
+	        	<li><a href="#!" style="height: 64px;" class="valign-wrapper dropdown-button" data-activates="dropdownPerfil">Mi Perfil<i class="material-icons right">arrow_drop_down</i> <img ng-src="{{user.photoURL}}" alt="" class="circle navBarImg white valign"/></a></li>
+	      	</ul>
+		</div>
+	</nav>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" ng-class="theme.navFabColor" ng-click="save()">
+		<i class="material-icons">done</i>
+	</a>
+</div>
+
+<div class="container">
+	<h4>Crear una Mesa</h4>
+	
+	<div class="row">
+		<div class="col m8">
+			<h5>Información general</h5>
+			<div class="divider"></div>
+			<div class="col m12 l12">
+				<div class="row">
+					<div class="col m12 l12">
+						<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+							<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+								<p>Foto Cover</p>
+							</div>
+							<div class="col m8 l8 white file-field" >
+								<div class="col l12" ng-hide="fotoCover">
+									<img ng-src="{{newEncounter.coverImg}}" class=" classcovImgPrev">
+								</div>
+								<div id="covImgPrev"  ng-show="fotoCover"></div>
+								<media-preview preview-container="covImgPrev" preview-class="classcovImgPrev" model="fotoCover"></media-preview>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Fecha</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<input type="text" class="datepicker" placeholder="Fecha">
+					</div>
+				</div>
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Hora de inicio</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<input type="text" class="" placeholder="Hora de inicio" ng-model="newEncounter.startingAt">
+					</div>
+				</div>
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Hora de finalizar</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<input type="text" class="" placeholder="Hora de finalizar" ng-model="newEncounter.endingAt">
+					</div>
+				</div>
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Nombre</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<input placeholder="Nombre" id="name" type="text" class="validate" ng-model="newEncounter.name">
+					</div>
+				</div>
+				
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Lugar</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<input placeholder="Lugar" id="place" type="text" class="validate" ng-model="newEncounter.place">
+					</div>
+				</div>
+
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Cómo llegar?</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<input placeholder="Cómo llegar?" id="place" type="text" class="validate" ng-model="newEncounter.directions">
+					</div>
+				</div>
+
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Descripción</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<textarea id="description" class="materialize-textarea" ng-model="newEncounter.description" placeholder="Escribe una descripción corta con palabras claves aquí..."></textarea>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Esta mesa es:</p>
+					</div>
+					<div class="col m8 l8 white" >
+						<div class="row" style="padding-bottom: 10px">
+							<form action="#">
+							    <div class="col m6">
+							      <input name="groupPrivacy" type="radio" id="public" value="public" ng-model="newEncounter.privacy"/>
+							      <label for="public">Pública</label>
+							    </div>
+							    <div class="col m6">
+							      <input name="groupPrivacy" type="radio" id="private" value="private" ng-model="newEncounter.privacy" />
+							      <label for="private">Privada</label>
+							    </div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+					<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+						<p>Número máximo de comensales</p>
+					</div>
+					<div class="col m8 l8 white" style="padding-bottom: 10px">
+						<select ng-model="newEncounter.maxPlayers" class="browser-default" >
+							<option value="" disabled selected>Número MÁXIMO de comensales</option>
+							<option value=1>1</option>
+							<option value=2>2</option>
+							<option value=3>3</option>
+							<option value=4>4</option>
+							<option value=5>5</option>
+							<option value=6>6</option>
+							<option value=7>7</option>
+							<option value=8>8</option>
+							<option value=9>9</option>
+							<option value=10>10</option>
+							<option value=11>más de 10</option>
+						</select>
+					</div>
+				</div>
+				
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ************************
+	MODAL GAME NOT FOUND
+**************************-->
+
+<div id="modalGameNotFound" class="modal">
+	<div class="modal-content">
+		<h4>Juego nuevo</h4>
+		<div class="divider"></div>
+			<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+				<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+					<p>Nombre del juego</p>
+				</div>
+				<div class="col m8 l8 white" >
+					<input type="text" class="" placeholder="Nombre del juego" ng-model="unknownGame.name">
+				</div>
+			</div>
+			
+			<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+				<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+					<p>Mínimo número de jugadores</p>
+				</div>
+				<div class="col m8 l8 white" >
+					<input placeholder="Mínimo número de jugadores" type="text" class="validate" ng-model="unknownGame.minPlayers">
+				</div>
+			</div>
+
+			<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+				<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+					<p>Máximo número de jugadores</p>
+				</div>
+				<div class="col m8 l8 white" >
+					<input placeholder="Máximo número de jugadores" type="text" class="validate" ng-model="unknownGame.maxPlayers">
+				</div>
+			</div>
+			
+			<div class="row" style="margin-bottom:0px" ng-class="theme.formColumnRight">
+				<div class="col m4 l4 blue-grey lighten-5 myFormCol">
+					<p>Tiempo estimado de juego</p>
+				</div>
+				<div class="col m8 l8 white" >
+					<input placeholder="Tiempo estimado de juego" type="text" class="validate" ng-model="unknownGame.playingTime">
+				</div>
+			</div>
+		
+	</div>
+	<div class="modal-footer">
+		<a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="useUnknownGame()">Aceptar</a>
+	</div>
+</div>

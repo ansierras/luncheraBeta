@@ -1,0 +1,166 @@
+<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper" ng-class="theme.navBarColor">
+			<a href="#!" class="brand-logo valign-wrapper">
+				<img src="./assets/logoLunch.png">
+			</a>
+		</div>
+	</nav>
+</div>
+<div class="row center-align" style="margin-top: 150px;" ng-show="loadingEncounter">
+	<div class="preloader-wrapper big active center-align">
+		<div class="spinner-layer spinner-blue-only">
+			<div class="circle-clipper left">
+				<div class="circle"></div>
+			</div>
+			<div class="gap-patch">
+				<div class="circle"></div>
+			</div>
+			<div class="circle-clipper right">
+				<div class="circle"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="parallax-container " style="max-height: 200px" ng-show="!loadingEncounter">
+  	<div class="section no-pad-bot center-align">
+    	<h2 class="center-align belladonna" style="text-shadow: 2px 2px #0a0a0a;">{{thisMesa.name}} </h2>
+
+    	<a class="waves-effect waves-light btn purple" ng-click="rsvp()" ng-show="!userIsPlayer" style="margin-top: 100px">RESERVAR</a>
+  	</div>
+  	<div class="parallax"><img ng-src="{{thisMesa.coverImg}}" alt="Unsplashed background img 3"></div>
+</div>
+<div class="row white-text" style="margin-bottom: 0px;" ng-class="theme.detailBar" ng-show="!loadingEncounter">
+	<div class="row"></div>
+	<div class="col m11 offset-m1">
+
+		<div class="col m4">
+			<div class="row">
+				<div class="col m1">
+					<i class="material-icons left">location_on</i>
+				</div>
+				<div class="col m11">
+					{{thisMesa.place}} en {{adminserv.getContextById('name','city',[thisMesa.country, thisMesa.city])}} , {{adminserv.getContextById('name','country',thisMesa.country)}}
+				</div>
+			</div>
+		</div>
+		<div class="col m4">
+			<div class="row">
+				<div class="col m1">
+					<i class="material-icons left">event</i>
+				</div>
+				<div class="col m11">
+					{{adminserv.interpretDate(thisMesa.date)}}
+				</div>
+			</div>
+		</div>
+		<div class="col m4">
+			<!--
+			<span class="new badge lime tooltipped" data-position="bottom" data-delay="50" data-tooltip="Este evento aparece en la lista pública de tu ciudad" ng-show="thisMesa.privacy=='public'" data-badge-caption="evento público"></span><span class="new badge red" ng-show="thisMesa.privacy=='private'" data-badge-caption="evento privado"></span>
+			-->
+			<div class="row">
+				<div class="col m1">
+					<i class="material-icons left">group</i>
+				</div>
+				<div class="col m11">
+					puestos disponibles: {{thisMesa.availableSeats.length}} de {{thisMesa.maxPlayers}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row" style="margin-top: 10px" ng-show="!loadingEncounter">
+	<div class="col m8 l8">
+		<div class="container">
+			<h4>Descripción</h4>
+			<p>{{thisMesa.description}}</p>
+		</div>
+	</div>
+	<div class="col m4 l4 lunchefCard" >
+		<div class="row" style="margin-top: 20px">
+			<a class="waves-effect waves-light btn light-blue" >{{organizer.name}} {{organizer.lastNames}}</a>
+		</div>
+		<div class="row">
+			<div class="col m4 l4">
+				<img class="responsive-img" ng-src="{{organizer.photoURL}}">
+			</div>
+			<div class="col m8 l8">
+				<h4 class="avenirbold miP">Lunchef</h4>
+				<p class="avenirbook miP">{{thisMesa.place}}, {{adminserv.getContextById('name','city',[organizer.countryId, organizer.cityId])}}</p>
+				<a class="waves-effect waves-lime btn-flat" ng-if="iAmAdmin" ng-click="confirmDelete()">Eliminar mesa</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class=" section white-text" ng-class="theme.navBarColor" ng-show=" userIsPlayer && userAsPlayer.status=='payment_pending'">
+	<div class="container">
+		<div class="row">
+			<h3>YA CASI LO TIENES!</h3>
+			<p>Ahora debes pagar tu reserva. Sigue estos pasos para confirmar tu pago y tu puesta en esta experiencia :)</p>
+		</div>
+		<div class="row">
+			<div class="col m4 l4">
+				<h4>Paso 1</h4>
+				<p>Haz una transferencia a la cuenta de AHORROS Bancolombia número XXXXXXXX por el valor total de tu reserva</p>
+			</div>
+			<div class="col m4 l4">
+				<h4>Paso 2</h4>
+				<p>Envíanos el comprobante de pago a ljsdflkjdf@lksjdf.com o al whatsapp</p>
+				<a class="btn" href="https://api.whatsapp.com/send?phone=521551234567&text=Me%20gustaría%20saber%20el%20precio%20del%20coche">Whatsapp</a>
+			</div>
+			<div class="col m4 l4">
+				<h4>Paso 3</h4>
+				<p>Una vez tu pago sea verificado, LISTO! Prepárate para tener una experiencia LunchEra.</p>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div class="container" ng-show="!loadingEncounter">
+	<div class="divider"></div>
+	<h4 class="center-align">Comensales <a class="waves-effect waves-lime btn-flat" ng-if="iAmAdmin" ng-click="">Eliminar mesa</a></h4>
+
+	<div class="row">
+			<div class="chip" ng-repeat="player in thisMesa.players">
+			    <img ng-src="{{player.photoURL}}" alt="Contact Person">
+			    <a ng-href="#!/usuario/{{player.userKey}}">{{player.name}}</a>
+				<i class="myClose material-icons" ng-if="adminserv.userIsMe(player.userKey) || iAmAdmin" ng-click="removePlayer(player)">close</i>
+			</div>
+			<div class="chip" ng-repeat="puesto in thisMesa.availableSeats">
+			    <img ng-src="{{puesto.photoURL}}" >
+			    <a ng-click="rsvp()">{{puesto.name}}</a>
+			</div>
+	</div>
+
+	<div class="divider"></div>
+	<h4 class="center-align">Discusión</h4>
+
+	<div class="row">
+		<div class="col m10">
+			<input placeholder="Comenta algo..." ng-model="newMessage.text"/>
+		</div>
+		<div class="col m2">
+			<a class="btn " ng-click="addMessage()"><i class="material-icons">send</i></a>
+		</div>
+	</div>
+	<div class="row">
+		<ul class="collection">
+		    <li class="collection-item avatar" ng-repeat="message in thisMesa.discussion | orderBy:'-'">
+				<img ng-src="{{message.author.photoURL}}" alt="" class="circle">
+				<span class="title"><a ng-href="#!/usuario/{{message.author.userKey}}">{{message.author.name}} {{message.author.lastNames}}</a> dice:</span>
+				<p class="grey-text">{{adminserv.interpretDateMessage(message.date)}}</p>
+				<p>{{message.text}}</p>
+		    </li>
+		</ul>
+	</div>
+</div>
+<!-- Modal Structure -->
+<div id="modalDelete" class="modal">
+	<div class="modal-content">
+		<h4>OJO!</h4>
+		<p>De verdad quieres eliminar esta mesa? Se perderán todos los datos.</p>
+	</div>
+	<div class="modal-footer">
+		<a ng-click="deleteEncounter()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+	</div>
+</div>

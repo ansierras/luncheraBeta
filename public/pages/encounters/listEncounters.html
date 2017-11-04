@@ -1,0 +1,185 @@
+<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper" ng-class="theme.navBarColor">
+			<a href="#!" class="brand-logo valign-wrapper">
+				<img src="./assets/logoLunch.png">
+			</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+	        	<li ng-repeat="(index, itemMenu) in menu" ng-class="menuClasses[index]"><a ng-click="goto(itemMenu.linkTo)"><i class="material-icons left">{{itemMenu.icon}}</i>{{itemMenu.name}}</a></li>
+	        	<li><a href="#!" style="height: 64px;" class="valign-wrapper dropdown-button" data-activates="dropdownPerfil">Mi Perfil<i class="material-icons right">arrow_drop_down</i> <img ng-src="{{user.photoURL}}" alt="" class="circle navBarImg white valign"/></a></li>
+	      	</ul>
+		</div>
+	</nav>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" ng-class="theme.navFabColor" ng-click="goto('createEncounter')">
+		<i class="material-icons">add</i>
+	</a>
+</div>
+<div class="container">
+	<h4>Ofertas en {{currentCity}}</h4>
+	<div class="divider"></div>
+	<div class="">
+		<div class="row">
+			<div class="col m4 l4 black z-depth-2" ng-repeat="encounter in encounterList" style="margin-right: 20px; margin-left: 20px">
+				<div class="row" style="margin-bottom: 0px">
+					<div class="listItemImg" ng-style="{'background-image':'url('+encounter.coverImg+')'}" ></div>
+				</div>
+				
+				<div class=" row white-text" style="margin: 20px">
+					<h6 class="light-blue-text avenirblack">{{encounter.name.toUpperCase()}}</h6>
+					<p class="avenir miP">{{adminserv.interpretDate(encounter.date)}}</p>
+					<p class="avenir miP">En {{encounter.place}}</p>
+					<p class="avenir miP"> De {{encounter.startingAt}} a {{encounter.endingAt}}</p>
+					<p class="avenirbold miP">Para {{encounter.maxPlayers}} personas</p>
+				</div>
+				<div class="row center-align">
+					<a class="waves-effect waves-light btn light-blue avenir" ng-href="#!/mesa/{{encounter.country}}/{{encounter.$id}}">Ver detalles</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--
+	<div class="listItem z-depth-2" ng-repeat="encounter in encounterList " ng-style="{'background-image':'url('+encounter.coverImg+')'}">
+		<div class="row" style="margin-left: 0px">
+		<div class="itemContent white-text center-align col m4 l4" >
+			<h5 class="center-align">{{encounter.name}}</h5>
+			<p class="center-align">{{adminserv.interpretDate(encounter.date)}}</p>
+			<p>En {{encounter.place}}</p>
+			<p> De {{encounter.startingAt}} a {{encounter.endingAt}}</p>
+			<p>Para {{encounter.maxPlayers}} personas</p>
+			<div class="row" style="padding-left: 20px">
+				<div class="col m3 l3">
+					<img ng-src="{{encounter.host.photoURL}}" class=" responsive-img z-depth-2">
+				</div>
+				<div class="col m9 l9 valign-wrapper">
+					<p class="valign">{{encounter.host.name}} {{encounter.host.lastNames}}
+					</p>
+				</div>
+			</div>
+			<a class="waves-effect waves-teal btn-flat white-text" ng-href="#!/mesa/{{encounter.country}}/{{encounter.$id}}">Ver detalles</a>
+		</div>
+		<div class="col m8 l8 right-align" style="bottom: 0px">
+			
+		</div>
+		</div>
+	</div>
+</div>
+-->
+
+<!--
+<div class="row" style="height: 100%;">
+	<div class="col m3 grey" style="min-height:600px" >
+		<div class="row">
+			<select class="browser-default" ng-model="filter.communeId">
+			  	<option ng-value="{{comuna.id}}" ng-repeat="comuna in communes">{{comuna.name}}</option>
+			</select>
+		</div>
+		<div class="row">
+			<p class="range-field">
+			      <input type="range" id="test5" min="0" max="100" />
+			    </p>
+		</div>
+	</div>
+	<div class="col m9">
+		<div class="" ng-repeat="encounter in encounterList ">
+			<img ng-src="{{encounter.coverImg}}" style="width: 100%">
+		</div>
+		
+	</div>
+	<div class="col m9">
+		<div class="container">
+			<h4>Lista de Mesas Públicas en {{currentCity}}</h4>
+
+			<div class="divider"></div>
+			<div class="row" ng-show="encounterList.length>0 && !loadingEncounterList">
+				<div class="col s12 m4" ng-repeat="encounter in encounterList ">
+					<div class="card small">
+						<div class="card-image">
+							<img ng-src="{{encounter.coverImg}}">
+							<span class="card-title">{{encounter.name}}</span>
+						</div>
+						<div class="card-content">
+							<p>{{adminserv.interpretDate(encounter.date)}}</p>
+							<p>{{encounter.place}}</p>
+						</div>
+						<div class="card-action">
+							<a ng-href="#!/mesa/{{encounter.country}}/{{encounter.$id}}">Ver detalles</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-show="encounterList.length<=0 && !loadingEncounterList">
+				<div class="container">
+					<h2>OOPS!</h2>
+					<h4>Parece que no hay mesas en tu localidad :(</h4>
+				</div>
+			</div>
+			<div class="row center-align" style="margin-top: 150px;" ng-show="loadingEncounterList">
+				<div class="preloader-wrapper big active center-align">
+					<div class="spinner-layer spinner-blue-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+-->
+<!--
+<div class="container">
+	<h4>Lista de Mesas Públicas en {{currentCity}}</h4>
+
+	<div class="divider"></div>
+    <select class="browser-default" ng-model="filter.communeId">
+      <option ng-value="{{comuna.id}}" ng-repeat="comuna in communes">{{comuna.name}}</option>
+    </select>
+	<div class="row" ng-show="encounterList.length>0 && !loadingEncounterList">
+		<div class="col s12 m3" ng-repeat="encounter in encounterList | filter: filterFunc">
+			<div class="card small">
+				<div class="card-image">
+					<img ng-src="{{encounter.game.thumbnail}}">
+					<span class="card-title">{{encounter.name}}</span>
+				</div>
+				<div class="card-content">
+					<p>{{adminserv.interpretDate(encounter.date)}}</p>
+					<p>{{encounter.place}}</p>
+				</div>
+				<div class="card-action">
+					<a ng-href="#!/mesa/{{encounter.country}}/{{encounter.$id}}">Ver detalles</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-show="encounterList.length<=0 && !loadingEncounterList">
+		<div class="container">
+			<h2>OOPS!</h2>
+			<h4>Parece que no hay mesas en tu localidad :(</h4>
+		</div>
+	</div>
+	<div class="row center-align" style="margin-top: 150px;" ng-show="loadingEncounterList">
+		<div class="preloader-wrapper big active center-align">
+			<div class="spinner-layer spinner-blue-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+-->

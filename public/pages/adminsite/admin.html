@@ -1,0 +1,83 @@
+<div class="navbar-fixed">
+  <nav class="nav-extended" ng-class="theme.navBarColor">
+    <div class="nav-wrapper" >
+      <a href="#!" class="brand-logo valign-wrapper">
+        <img src="./assets/logoLunch.png">
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+            <li ng-repeat="(index, itemMenu) in menu" ng-class="menuClasses[index]"><a ng-click="goto(itemMenu.linkTo)"><i class="material-icons left">{{itemMenu.icon}}</i>{{itemMenu.name}}</a></li>
+            <li><a href="#!" style="height: 64px;" class="valign-wrapper dropdown-button" data-activates="dropdownPerfil">Mi Perfil<i class="material-icons right">arrow_drop_down</i> <img ng-src="{{user.photoURL}}" alt="" class="circle navBarImg white valign"/></a></li>
+          </ul>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="#users">Usuarios</a></li>
+        <li class="tab"><a href="#mesas">Mesas</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<ul id="dropdownPerfil" class="dropdown-content">
+  <li><a href="#!">Ver mi perfil</a></li>
+  <li><a href="#!">Editar mi perfil</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">Cerrar Sesión</a></li>
+</ul>
+
+
+
+
+<div class="container" style="margin-top: 50px">
+  <!-- **********************
+  *       USERS
+  ************************-->
+  <div id="users" class="col s12">
+    <div class="chip" ng-repeat="player in usersComplete">
+      <img ng-src="{{player.photoURL}}" alt="Contact Person">
+      <a ng-href="#!/usuario/{{player.userKey}}">{{player.name}}</a>
+    </div>
+    <table class="striped">
+      <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Ciudad</th>
+            <th>Fecha ingreso</th>
+            <th>Estatus</th>
+            <th>UID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users">
+          <td>{{user.name}}</td>
+          <td>{{user.lastNames}}</td>
+          <td>{{adminserv.getContextById('name','city',[user.countryId, user.cityId])}}</td>
+          <td>{{adminserv.interpretDate(user.memberSince)}}</td>
+          <td>{{user.status}}</td>
+          <td>{{user.uid}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- **********************
+  *       ENCOUNTERS
+  ************************-->
+  <div id="mesas" class="col s12">
+    <div class="row">
+      <div class="col m4">
+        <a class="btn" ng-click="flushEncounters()">Limpiar encuentros</a>
+      </div>
+      <div class="col m8">
+        <div class="progress" ng-show="workingFlushEncounters">
+          <div class="determinate" ng-style="progress"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

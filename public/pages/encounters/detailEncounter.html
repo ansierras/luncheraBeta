@@ -1,0 +1,94 @@
+<nav role="navigation" ng-class="theme.navBarColor">
+  <div class="nav-wrapper container" >
+    <a id="logo-container" href="#" class="brand-logo"><img src="./assets/logoLunch.png"></a>
+
+    <ul id="nav-mobile" class="side-nav">
+      <li><a href="#!/login">Login</a></li>
+      <li><a href="#!/registro">Registrarme</a></li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<h2 class="avenirbold grey-text text-darken-3">{{thisMesa.name}}</h2>
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col m6">
+				<img ng-src="{{thisMesa.coverImg}}" style="width: 100%">
+			</div>
+			<div class="col m6">
+				<div class="row">
+					<div class="col m12 white z-depth-1" style="color: #4a4a4a; padding: 30px; margin-bottom: 10px">
+						<h5>Descripción</h5>
+						<div class="divider">	</div>
+						<p>{{thisMesa.description}}</p>
+					</div>
+					<div class="col m12 white z-depth-1" style="color: #4a4a4a; padding: 30px; margin-bottom: 10px">
+						
+						<div class="row">
+							<div class="col m1">
+								<i class="material-icons left">event</i>
+								
+							</div>
+							<div class="col m10">
+								{{adminserv.interpretDate(thisMesa.date)}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m1">
+								<i class="material-icons left">access_time</i>
+								
+							</div>
+							<div class="col m10">
+								de {{thisMesa.startingAt}} a {{thisMesa.endingAt}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m1">
+								<i class="material-icons left">group</i>
+								
+							</div>
+							<div class="col m10">
+								puestos disponibles: {{thisMesa.availableSeats.length}} de {{thisMesa.maxPlayers}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m1">
+								<i class="material-icons left">location_on</i>
+								
+							</div>
+							<div class="col m10">
+								{{thisMesa.place}}
+								<div class="divider"></div>
+								{{thisMesa.directions}}
+							</div>
+						</div>
+					</div>
+					<div class="col m12 white z-depth-1" style="color: #4a4a4a; padding: 30px; margin-bottom: 10px">
+						<div class="row">
+							<h5>LunChef</h5>
+							<div class="divider" style="margin-bottom: 10px"></div>
+							<div class="col s2">
+								<img src="./assets/default-avatar.png" ng-src="{{chef.photoUrl}}" class="circle z-depth-2 responsive-img">
+							</div>
+							<div class="col s10">
+								<p class="grey-text text-darken-4">
+									{{chef.name}} {{chef.lastName}}
+								</p>
+								<span class="grey-text text-darken-1">{{chef.description}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="col m12">
+						<a href="" class="btn purple" style="width: 100%"> RESERVAR!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

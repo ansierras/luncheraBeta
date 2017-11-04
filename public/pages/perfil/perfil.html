@@ -1,0 +1,248 @@
+<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper" ng-class="theme.navBarColor">
+			<a href="#!" class="brand-logo valign-wrapper">
+				<img src="./assets/logoLunch.png">
+			</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+
+	        	<li ng-repeat="(index, itemMenu) in menu" ng-class="menuClasses[index]"><a ng-click="goto(itemMenu.linkTo)" class="delhi"><i class="material-icons left">{{itemMenu.icon}}</i>{{itemMenu.name}}</a></li>
+	        	<li class="active"><a href="#!" style="height: 64px;" class="valign-wrapper dropdown-button delhi" data-activates="dropdownPerfil">Mi Perfil<i class="material-icons right">arrow_drop_down</i> <img ng-src="{{user.photoURL}}" alt="" class="circle navBarImg white valign"/></a></li>
+	      	</ul>
+			<!--
+			<form class="right">
+				<div class="input-field">
+					<input id="search" type="search" required ng-model="profileFilter">
+					<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+					<i class="material-icons">close</i>
+				</div>
+			</form>
+			-->
+		</div>
+	</nav>
+</div>
+
+<ul id="dropdownPerfil" class="dropdown-content">
+	<!--
+	<li><a href="#!">Ver mi perfil</a></li>
+	<li><a href="#!">Editar mi perfil</a></li>
+	<li class="divider" ng-if="user.status=='admin'"></li>
+    -->
+	<li ng-if="user.status=='admin'"><a href="#!/adminsite">Admin Site</a></li>
+	<li class="divider"></li>
+	<li><a ng-click="logout()">Cerrar Sesión</a></li>
+</ul>
+<ul id="dropdownMesas" class="dropdown-content">
+	<li><a href="#!">Ver mesas</a></li>
+	<li><a href="#!">Crear una mesa</a></li>
+</ul>
+
+<div class="tap-target" data-activates="edit">
+	<div class="tap-target-content">
+		<h5>Para comenzar...</h5>
+		<p>Llena los campos correspondientes. Una vez termines, haz click en este botón para guardar los cambios. ¡Podrás volver aquí cuando quieras!</p>
+	</div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" ng-class="theme.navFabColor" ng-click="editProfile()" id="edit">
+    	<i class="material-icons" ng-if="!modeEdit" >mode_edit</i>
+    	<i class="material-icons" ng-if="modeEdit">save</i>
+    </a>
+</div>
+<div class="row center-align" style="margin-top: 150px;" ng-show="loadingUser">
+	<div class="preloader-wrapper big active center-align">
+		<div class="spinner-layer spinner-blue-only">
+			<div class="circle-clipper left">
+				<div class="circle"></div>
+			</div>
+			<div class="gap-patch">
+				<div class="circle"></div>
+			</div>
+			<div class="circle-clipper right">
+				<div class="circle"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- perfil viejo con parallax
+<div class="parallax-container valign-wrapper" style="max-height: 200px" ng-show="!loadingUser">
+  	<div class="section no-pad-bot">
+    	<div class="container">
+      		<div class="row center">
+        		<div class="col m6 offset-m3">
+        			<div class="col m6 offset-m3">
+        				<img class="responsive-img circle" ng-src="{{user.photoURL}}" style="background-color:white">
+        				
+        			</div>
+        		</div>
+     		</div>
+     		<div class="row center">
+     			<div class="row">
+     				<h5 class="header col s12 light">{{user.name}} {{user.lastNames}}</h5>
+     			</div>
+     			
+     			<div class="row center">
+     				<span class="valign">{{adminserv.getContextById('name','city',[user.countryId, user.cityId])}} , {{adminserv.getContextById('name','country',user.countryId)}}</span>
+     			</div>
+     			
+     		</div>
+    	</div>
+  	</div>
+  	<div class="parallax"><img ng-src="{{user.coverImg}}" alt="Unsplashed background img 3">
+
+  	</div>
+  	
+</div>
+-->
+<div class="section valign-wrapper  white-text profileBackground" ng-show="!loadingUser">
+	<div class="container">
+  		<div class="row center">
+    		<div class="col m6 offset-m3">
+    			<div class="col m6 offset-m3">
+    				<img class="responsive-img circle" ng-src="{{user.photoURL}}" style="background-color:white">
+    				
+    			</div>
+    		</div>
+ 		</div>
+ 		<div class="row center">
+ 			<div class="row">
+ 				<h5 class="header col s12 light">{{user.name}} {{user.lastNames}}</h5>
+ 				<p>Luncher desde {{adminserv.interpretDate(user.memberSince)}}</p>
+ 			</div>
+ 			
+ 			<div class="row center">
+ 				<span class="valign">{{adminserv.getContextById('name','city',[user.countryId, user.cityId])}} , {{adminserv.getContextById('name','country',user.countryId)}}</span>
+ 			</div>
+ 			
+ 		</div>
+	</div>
+</div>
+<div class="section" ng-class="theme.detailBar"></div>
+<div class="section" ng-show="!modeEdit && !loadingUser">
+	<div class="row">
+		<div class="container">
+			<div class="col m2">
+				<ul id="slide-out" class="my-side-nav fixed">
+				    <li ng-click="selectSection(0)" ng-class="sectionClasses[0]">General</li>
+				    <li ng-click="selectSection(1)" ng-class="sectionClasses[1]">Mis Ofertas</li>
+				    <li ng-click="selectSection(2)" ng-class="sectionClasses[2]">Mis Reservas</li>
+				    <li ng-click="selectSection(3)" ng-class="sectionClasses[3]">Mensajes</li>
+				</ul>
+			</div>
+			<div class="col m10">
+				<div ng-show="visibleSection[0]">
+					<h4>Descripción</h4>
+					<p>{{user.bio}}</p>
+					<div class="col m12">
+						<div class="row">
+							<div class="col m1">
+								<i class="material-icons left">email</i>
+							</div>
+							<div class="col m10">
+								{{user.email}}
+							</div>
+						</div>
+					</div>
+					<div class="col m12">
+						<div class="row">
+							<div class="col m1">
+								<i class="material-icons left">phone</i>
+							</div>
+							<div class="col m10">
+								{{user.telephone}}
+							</div>
+						</div>
+					</div>
+					<a class="btn" ng-click="logout()">Cerrar Sesión</a>
+				</div>
+				<div ng-show="visibleSection[1]">
+					<h5>soy anfitrión:</h5>
+					<div class="divider"></div>
+					<div class="col s12 m6" ng-repeat="encounter in encounters.iAmAdmin">
+						<div class="card small">
+							<div class="card-image">
+								<img ng-src="{{encounter.coverImg}}">
+								<span class="card-title">{{encounter.name}}</span>
+							</div>
+							<div class="card-content">
+								<p>{{adminserv.interpretDate(encounter.date)}}</p>
+								<p>{{encounter.place}}</p>
+							</div>
+							<div class="card-action">
+								<a href="#!/mesa/{{encounter.country}}/{{encounter.$id}}">Ver más <span ng-show="encounter.warning" class="new badge" data-badge-caption="!"></span></a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-show="visibleSection[2]">
+					<h5>soy comensal:</h5>
+					<div class="divider"></div>
+					<div class="col s12 m6" ng-repeat="encounter in encounters.iAmPlayer">
+						<div class="card small">
+							<div class="card-image">
+								<img ng-src="{{encounter.coverImg}}">
+								<span class="card-title">{{encounter.name}}</span>
+							</div>
+							<div class="card-content">
+								<p>{{adminserv.interpretDate(encounter.date)}}</p>
+								<p>{{encounter.place}}</p>
+							</div>
+							<div class="card-action">
+								<a href="#!/mesa/{{encounter.country}}/{{encounter.$id}}">Ver más</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-show="visibleSection[3]">
+					<div class="row">
+						<div class="col m12">
+						    <div class="card horizontal" ng-repeat="message in userMessages">
+								<div class="card-image col m3">
+									<img ng-src="{{message.author.photoURL}}">
+								</div>
+								<div class="card-stacked">
+									<div class="card-content">
+										<a class="bold" ng-href="#!/usuario/{{message.author.userKey}}">{{message.author.name}} {{message.author.lastNames}}</a>
+										<p class="bold">{{adminserv.interpretDateLong(message.date)}}</p>
+										<div class="divider"></div>
+										<p>{{message.text}}</p>
+									</div>
+									<div class="card-action">
+										<a ng-click="openRespondModal(message.author)">Responder</a>
+										<a ng-click="archiveMessage(message)">Archivar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+
+
+<div id="modalWelcome" class="modal">
+	<div class="modal-content">
+		<h4>¡BienvenidX {{user.name}}!</h4>
+		<p>Ahora eres parte de la comunidad de enamorados de la buena cocina que buscan vivir nuevas experiencias en torno a la gastronomía!</p>
+	</div>
+	<div class="modal-footer">
+		<a  class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="openTutorial(0)">Comenzar</a>
+	</div>
+</div>
+
+<div id="modalRespond" class="modal">
+	<div class="modal-content">
+		<h4>Envía un mensaje a {{toUser.name}}</h4>
+		<div class="input-field col s12">
+			<textarea class="materialize-textarea" placeholder="escribe aquí tu mensaje" ng-model="newMessage"></textarea>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a  class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="sendMessage()">Comenzar</a>
+	</div>
+</div>

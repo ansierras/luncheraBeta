@@ -1,0 +1,246 @@
+
+@font-face {
+    font-family: "SofiaProLight";
+    src: url('SofiaProLight.otf') format("truetype");
+}
+@font-face {
+    font-family: "belladonna";
+    src: url('belladonna.ttf') format("truetype");
+}
+@font-face {
+    font-family: "avenir";
+    src: url('avenirbook.otf') format("truetype");
+}
+@font-face {
+    font-family: "avenirblack";
+    src: url('avenirblack.otf') format("truetype");
+}
+@font-face {
+    font-family: "avenirbold";
+    src: url('avenirbold.otf') format("truetype");
+}
+
+html {
+  font-family: "avenir";
+}
+div {
+  font-family: "avenir";
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+a{
+	cursor: pointer;
+}
+
+.avenir{
+  font-family: "avenir";
+}
+
+.avenirblack{
+  font-family: "avenirblack";
+}
+
+.avenirbold{
+  font-family: "avenirbold";
+}
+
+.waves-effect.waves-lime .waves-ripple {
+  background-color: rgba(205, 220, 57, 0.65);
+}
+
+.miContenido {
+    padding-left: 320px;
+    padding-right: 20px;
+    width: 100%;
+}
+
+.miBackground {
+	height: 100%;
+	min-height: 100vh;
+	width: 100%;
+	background-image: url('../assets/bogbckgr.jpeg');
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.miP{
+  margin: 0px;
+  line-height: 1.5;
+}
+
+.profImg{
+	max-width: 100%;
+	height: 282px;
+	object-fit: cover;
+	margin-top: 20px;
+}
+
+.gameProfImg{
+	max-width: 100%;
+	height: 282px;
+	object-fit: cover;
+	margin-top: 20px;
+}
+
+.navBarImg{
+	height: 50px;
+	width: 50px;
+	background-color: 'white'
+}
+
+.myLogo{
+	height: 60px;
+	width: 60px;
+}
+
+.myColorNavbar{
+	background-color: #2F5068;
+}
+
+.myFabColor{
+	background-color: #76E83A;
+}
+
+.chip .myClose {
+	cursor: pointer;
+    float: right;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px;
+}
+
+.myChefBtn{
+  border-radius: 10px;
+}
+
+.brand-logo{
+	margin-left: 20px
+}
+.userInfoProf{
+  opacity: 0.3; 
+  position: absolute; 
+  width: 100%; 
+  height: 130px; 
+  bottom: 0px;
+}
+
+.classprofImgPrev{
+  width: 100px;
+  height: 100px;
+}
+.classcovImgPrev{
+  width: 100px;
+  height: 100px;
+}
+
+.listItem{
+  height:330px;
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+  margin-top: 30px;
+}
+
+.listItem2{
+  padding: 0px
+}
+
+.listItem a{
+  right: 0px;
+  bottom: 0px
+}
+.listItemImg {
+  height:180px;
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.itemContent{
+  height: 330px;
+  /*width: 300px;*/
+  background-color: rgba(0,0,0,0.67);
+  padding-top: 20px;
+}
+.belladonna{
+  font-family: "belladonna";
+}
+.lunchefCard{
+  background-image: url('../assets/lunchefBck2.jpg');
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+.profileBackground {
+  /*background-image: url('../assets/cooking2.jpeg');
+  background-size:     cover;                      
+  background-repeat:   no-repeat;
+  background-position: center center;*/
+  background: rgba(143,74,232,1);
+  background: -moz-linear-gradient(left, rgba(143,74,232,1) 0%, rgba(142,98,234,1) 21%, rgba(139,175,239,1) 89%, rgba(138,187,240,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(143,74,232,1)), color-stop(21%, rgba(142,98,234,1)), color-stop(89%, rgba(139,175,239,1)), color-stop(100%, rgba(138,187,240,1)));
+  background: -webkit-linear-gradient(left, rgba(143,74,232,1) 0%, rgba(142,98,234,1) 21%, rgba(139,175,239,1) 89%, rgba(138,187,240,1) 100%);
+  background: -o-linear-gradient(left, rgba(143,74,232,1) 0%, rgba(142,98,234,1) 21%, rgba(139,175,239,1) 89%, rgba(138,187,240,1) 100%);
+  background: -ms-linear-gradient(left, rgba(143,74,232,1) 0%, rgba(142,98,234,1) 21%, rgba(139,175,239,1) 89%, rgba(138,187,240,1) 100%);
+  background: linear-gradient(to right, rgba(143,74,232,1) 0%, rgba(142,98,234,1) 21%, rgba(139,175,239,1) 89%, rgba(138,187,240,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f4ae8', endColorstr='#8abbf0', GradientType=1 );
+}
+.my-side-nav li{
+  float: none;
+  line-height: 48px;
+  cursor: pointer;
+  padding-left: 10px;
+}
+.my-side-nav-selected{
+  background-color: rgba(0,0,0,0.06);
+  border-right: 3px solid black;
+}
+
+.my-side-nav li:hover {
+  background-color: rgba(0,0,0,0.13);
+  display: block;
+  font-weight: 500;
+  height: 48px;
+  line-height: 48px;
+}
+/************ LANDING SITE *************/
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
