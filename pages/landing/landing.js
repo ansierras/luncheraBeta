@@ -29,6 +29,7 @@ angular.module('companion.landing', ['ui.router'])
 	//***********************************************
 
 	$scope.encounterList = [];
+	$scope.formEnviado = false;
 
 	Auth.$signInAnonymously().then(function(firebaseUser) {
 		console.log("Signed in as:", firebaseUser.uid);
@@ -56,4 +57,8 @@ angular.module('companion.landing', ['ui.router'])
 	}).catch(function(error) {
 	  console.error("Authentication failed:", error);
 	});
+
+	$scope.enviarForm = function(){
+		$scope.formEnviado = true;
+	}
 }])
