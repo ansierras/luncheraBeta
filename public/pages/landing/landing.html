@@ -3,10 +3,7 @@
   <nav role="navigation" ng-class="theme.navBarColor">
     <div class="nav-wrapper container" >
       <a id="logo-container" href="#" class="brand-logo"><img src="./assets/logoLunch.png"></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a >Login</a></li>
-        <li><a>Registrarme</a></li>
-      </ul>
+     
 
       <ul id="nav-mobile" class="side-nav">
         <li><a href="#!/login">Login</a></li>
@@ -16,7 +13,23 @@
     </div>
   </nav>
 
-  <div id="index-banner" class="parallax-container valign-wrapper" style="height: 700px">
+  <div class="section centeredBckImg white-text valign-wrapper" style="height: 800px; background-image: url('assets/cook.jpg')">
+    <div class="container" style="padding-top: 60px;">
+      
+      <h5 class="header center avenirbold">BUSCAMOS CONECTAR A LOS MEJORES COCINEROS</h5>
+      <div class="container">
+        <h5 class="header center ">DE LA CIUDAD CON TODAS AQUELLAS PERSONAS  QUE QUIERAN DISFRUTAR DE NUEVAS EXPERIENCIAS GASTRONÓMICAS</h5>
+        <h5 class="header center avenirbold">EN MEDELLÍN</h5>
+      </div>
+      <div class="row center">
+        <a  id="download-button" class="btn-large waves-effect waves-light purple" ng-click="gotoAnchor('Ofertas')">¡Comencemos!</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+  <!-- <div id="index-banner" class="parallax-container valign-wrapper" style="height: 700px">
     <div class="section no-pad-bot">
       <div class="container" style="padding-top: 60px;">
         
@@ -26,55 +39,62 @@
           <h5 class="header center avenirbold">EN MEDELLÍN</h5>
         </div>
         <div class="row center">
-          <a  id="download-button" class="btn-large waves-effect waves-light purple" >Comencemos!</a>
+          <a  id="download-button" class="btn-large waves-effect waves-light purple" >¡Comencemos!</a>
         </div>
         <br><br>
 
       </div>
     </div>
-    <div class="parallax"><img src="assets/bogbckgr.jpeg" ></div>
-  </div>
+    <div class="parallax"><img src="assets/cook.jpg" ></div>
+  </div> -->
 
   <div class="section">
     <div class="container" style="margin-top: 50px">
       <div class="container">
-        <h5 class="header center avenirbold light-blue-text"> LUNCHERA ES UNA COMUNIDADE AMANTES DE LA GASTRONOMÍA</h5>
+        <h5 class="header center avenirbold light-blue-text"> LUNCHERA ES UNA COMUNIDAD DE AMANTES DE LA GASTRONOMÍA</h5>
         <h5 class="header center"> QUE BUSCA GENERAR NUEVAS FORMAS DE INGRESOS PARA TODOS ESOS TALENTOSOS COCINEROS, CONOCIDOS Y DESCONOCIDOS, DE NUESTRA CIUDAD</h5>
       </div>
     </div>
   </div>
 
-  <div class="section">
+  <div class="section light-blue white-text">
     <div class="container" style="margin-top: 50px">
       <h5 class="header center"> <span class="avenirbold">LUNCHERIAR</span>  ES MUY FÁCIL</h5>
       <div class="row">
         <div class="col s12 m4">
-          <h1 class="center light-blue-text avenirbold" style="font-size: 8rem">1</h1>
-          <p class="center light-blue-text avenirbold">SELECCIONA</p>
+          <h1 class="center avenirbold" style="font-size: 10rem">1</h1>
+          <h4 class="center avenirbold">SELECCIONA</h4>
           <p class="center">una oferta gastronómica con un lunchef que te guste</p>
         </div>
         <div class="col s12 m4">
-          <h1 class="center indigo-text avenirbold" style="font-size: 8rem">2</h1>
-          <p class="center indigo-text avenirbold">RESERVA</p>
+          <h1 class="center avenirbold" style="font-size: 10rem">2</h1>
+          <h4 class="center avenirbold">RESERVA</h4>
           <p class="center">tu plato y el de los comensales con los que vas a asistir</p>
         </div>
         <div class="col s12 m4">
-          <h1 class="center purple-text avenirbold" style="font-size: 8rem">3</h1>
-          <p class="center purple-text avenirbold">PAGA</p>
+          <h1 class="center avenirbold" style="font-size: 10rem">3</h1>
+          <h4 class="center avenirbold">PAGA</h4>
           <p class="center">tu experiencia lunchera y prepárate para disfrutar</p>
         </div>
       </div>
       <div class="row center">
-        <a class="waves-effect waves-light btn-large purple" href="https://www.instagram.com/eligelunchera" target="_blank"><i class="fa fa-instagram fa-2x right"></i>SÍGUENOS EN </a>
+        <!-- <a class="waves-effect waves-light btn-large purple" href="https://www.instagram.com/eligelunchera" target="_blank"><i class="fa fa-instagram fa-2x right"></i>SÍGUENOS EN </a> -->
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m4 offset-m4">
+              <a class="waves-effect waves-light" href="https://www.instagram.com/eligelunchera" target="_blank"><img src="./assets/btn_insta.png" class="responsive-image" style="width: 100%"></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="index-banner" class="parallax-container hide-on-small-only" style="min-height: 650px; padding-bottom: 60px">
-    <div class="section no-pad-bot">
-      <div class="container" style="padding-top: 60px">
-        <h4 class="center white-text"><span class="avenirbold">LO MEJOR</span> DEL MES</h4>
-        <h5 class="center black-text">A continuación podrás disfrutar de las mejores ofertas gastronómicas que <span class="avenirbold">LUNCHERA</span> tiene en este mes.</h5>
+  <div id="anchorOfertas" class="section centeredBckImg" style="background-image: url('assets/lunchefBck2.jpg');">
+    <div class="container" style="padding-top: 60px">
+      <h4 class="center white-text"><span class="avenirbold">LO MEJOR</span> DEL MES</h4>
+      <div class="container"><h5 class="center black-text">A continuación podrás disfrutar de las mejores ofertas gastronómicas que <span class="avenirbold">LUNCHERA</span> tiene en este mes.</h5></div>
+      <div ng-show="!loadingOffers">
         <div class="row">
           <div class="col m3 l3 light-blue z-depth-2" ng-repeat="mesa in mesasList" style="margin-right: 20px; margin-left: 20px">
             <div class="row" style="margin-bottom: 0px">
@@ -84,7 +104,7 @@
             <div class=" row white-text" style="margin: 20px">
               <h6 class="black-text avenirblack">{{mesa.name.toUpperCase()}}</h6>
               <p class="avenir miP">{{adminserv.interpretDate(mesa.date)}}</p>
-              <p class="avenir miP">En {{mesa.place}}</p>
+              <p class="avenir miP">{{mesa.place}}</p>
               <p class="avenir miP"> De {{mesa.startingAt}} a {{mesa.endingAt}}</p>
               <p class="avenirbold miP">Para {{mesa.maxPlayers}} personas</p>
             </div>
@@ -95,17 +115,25 @@
           </div>
         </div>
         <div class="row center">
-          <div class="col m6">
-            <a class="waves-effect waves-light btn green accent-3"><i class="fa fa-whatsapp fa-2x right"></i>RESERVA <span class="avenirbold">AHORA</span></a>
+          <div class="col m12 s12">
+            <a class="waves-effect waves-light btn green accent-3" href="https://api.whatsapp.com/send?phone=573187059535&text=Hola!%20Quisiera%20hacer%20parte%20de%20LunchEra" target="_blank"><i class="fa fa-whatsapp fa-2x right"></i>RESERVA <span class="avenirbold">AHORA</span></a>
           </div>
-          <div class="col m6">
-            <a class="waves-effect waves-light btn blue darken-3 " href="https://m.me/140014959974210" target="_blank"><i class="fa fa-facebook fa-2x right"></i>RESERVA <span class="avenirbold">AHORA</span></a>
+        </div>
+      </div>
+      <div class="row center" ng-show="loadingOffers">
+        <div class="preloader-wrapper big active" >
+          <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="assets/lunchefBck2.jpg" ></div>
   </div>
 
   <div class="section hide-on-med-and-up" style="background-image: url('assets/lunchefBck2.jpg');">
@@ -132,6 +160,36 @@
     </div>
   </div>
 
+  <div class="section">
+    <div class="container" style="margin-top: 50px">
+      <div class="container">
+        <div >
+          <div class="row center light-blue-text"><h4><span class="avenirbold">LUNCHEFS</span> DESTACADOS</h4></div>
+          <div class="row" ng-show="!loadingChefs">
+            <div class="col s12 m3 center" ng-repeat="chef in topLunchefs">
+              <img ng-src="{{chef.photoUrl}}" class="responsive-image" style="width: 100%">
+              <p class="light-blue-text">{{chef.name.toUpperCase()}} <span class="avenirbold">{{chef.lastName.toUpperCase()}}</span></p>
+              <p class="grey-text text-darken-1">"{{chef.description}}"</p>
+            </div>
+          </div>
+        </div>
+        <div class="row center" ng-show="loadingOffers">
+          <div class="preloader-wrapper big active" >
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="section teal accent-3">
     <div class="container" style="margin-top: 50px">
       <h4 class="center white-text"><span class="avenirbold">CHEFS - ESTUDIANTES DE GASTRONOMÍA -</span></h4>
@@ -152,8 +210,10 @@
         <div class="row">
           <div class="col s12 m4">
             <div class="container">
-              <div class="row"></div>
               <div class="row center">
+                <div class="row">
+                  <img src="./assets/icon_money.png" style="width: 70%" class="responsive-image">
+                </div>
                 <span class="light-blue-text">Obtener ingresos adicionales haciendo lo que te apasiona</span>
                 <p class="light-blue-text">¡Cocinando!</p>
               </div>
@@ -161,58 +221,120 @@
           </div>
           <div class="col s12 m4">
             <div class="container">
-              <div class="row"></div>
               <div class="row center">
+                <div class="row">
+                  <img src="./assets/icon_soup.png" style="width: 70%" class="responsive-image">
+                </div>
                 <span class="light-blue-text">Validar tu talento con personas de la ciudad y comenzar a construir tu reputación como chef</span>
               </div>
             </div>
           </div>
           <div class="col s12 m4">
             <div class="container">
-              <div class="row"></div>
               <div class="row center">
+                <div class="row">
+                  <img src="./assets/icon_friends.png" style="width: 70%" class="responsive-image">
+                </div>
                 <span class="light-blue-text">Interactuar y conocer nuevas personas apasionadas por la gastronomía</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col s12 m6 offset-m3 purple myChefBtn waves-effect waves-light">
             <a class=" center white-text ">
               <p class="avenirbold">¿QUIERES COCINAR CON LUNCHERA?</p>
               <p>Inscríbete AQUÍ</p>
             </a>
           </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="section light-blue" ng-show="!formEnviado">
+    <div class="container">
+      <div class="row valign-wrapper">
+        <div class="col s12 m6">
+          <h4 class="center white-text">¿QUIERES HACER PARTE DE <span class="avenirbold">LUNCHERA</span>?</h4>
+          <h6 class="center white-text">Nos encataría que hicieras parte de esta comunidad. Danos tus datos y pronto nos pondremos en contacto.</h6>
+        </div>
+        <div class="col s12 m6 white">
+          <div class="container">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="first_name" type="text" class="validate" ng-model="newClient.name">
+                <label for="first_name">Tu nombre</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="first_name" type="text" class="validate"  ng-model="newClient.lastName">
+                <label for="first_name">Tus apellidos</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate"  ng-model="newClient.email">
+                <label for="email">Tu Email</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="tel" type="tel" class="validate"  ng-model="newClient.phone">
+                <label for="tel">Tu teléfono</label>
+              </div>
+            </div>
+            <div class="row center">
+              Quisiera participar como:
+              <p>
+                <input type="checkbox" id="luncher"  ng-model="newClient.luncher"/>
+                <label for="luncher">Luncher (comensal)</label>
+              </p>
+              <p>
+                <input type="checkbox" id="lunchef"  ng-model="newClient.lunchef"/>
+                <label for="lunchef">Lunchef (CHEF)</label>
+              </p>
+            </div>
+            <div class="row center">
+              <a class="waves-effect waves-light btn-large purple" ng-click="enviarForm()">Enviar</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="section light-blue" ng-show="formEnviado">
+    <div class="container ">
+      <h4 class="center white-text">¡EXCELENTE!</h4>
+      <h6 class="center white-text">Hemos recibido tus datos y nos pondremos en contacto contigo lo más pronto posible. </h6>
+      <h5 class="center white-text">¡GRACIAS por hacer parte de esta comunidad! </h5>
+    </div>
+  </div>
 
-  <footer class="page-footer teal">
+  <footer class="page-footer grey darken-3 white-text">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Equipo LunchEra</h5>
-          <p class="grey-text text-lighten-4">Gracias por interesarte en este proyecto. Si tienes alguna sugerencia o pregunta, no dudes en contactarnos.</p>
-
-
+      <div class="row center">
+        <div class="col s12 m4 offset-m4">
+          <img src="./assets/logoLunch.png" alt="" class="responsive-image">
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Contáctanos</h5>
-          <ul>
-            <li><a class="white-text" href="#!">infolunchera@gmail.com</a></li>
-          </ul>
-        </div>
-        
+      </div>
+      <div class="row center">
+        <p><span class="avenirbold">Wapp:</span> +57 305 391 6281 / <span class="avenirbold">Email:</span> infolunchera@gmail.com / <span class="avenirbold">Dirección:</span> Circular 75 # 38-09</p>
+        <p>Medellín - Antioquia</p>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by Andrés Sierra Sierra
+      Todos los derechos reservados - Lunchera 2017
       </div>
     </div>
   </footer>
+
+  <div id="modalForm" class="modal">
+      <div class="modal-content">
+        <h4>¡EXCELENTE!</h4>
+        <p>Nos encanta que quieras hacer parte de esta comunidad. Nos pondremos en contacto contigo lo más pronto posible para que puedas empezar a disfrutar de todas las experiencias y delicias que tenemos preparadas para tí.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Súper</a>
+      </div>
+    </div>
 
 
 

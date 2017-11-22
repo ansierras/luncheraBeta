@@ -145,6 +145,12 @@ a{
   margin-top: 30px;
 }
 
+.centeredBckImg{
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
 .listItem2{
   padding: 0px
 }

@@ -15,9 +15,10 @@ angular.module('companion.landing', ['ui.router'])
 
 }])
 
-.controller('landingCtrl', ['Auth', '$scope','$state','$rootScope','$firebaseArray','$firebaseObject', 'THEME', function(Auth, $scope, $state, $rootScope, $firebaseArray, $firebaseObject, THEME) {
+.controller('landingCtrl', ['$anchorScroll', '$location','Auth', '$scope','$state','$rootScope','$firebaseArray','$firebaseObject', 'THEME', function($anchorScroll, $location, Auth, $scope, $state, $rootScope, $firebaseArray, $firebaseObject, THEME) {
 	$('.button-collapse').sideNav();
 	$('.parallax').parallax();
+	$('.modal').modal();
 	//************Necesario para el MENU!!! ******************
 	$(".button-collapse").sideNav();
 	$scope.goto = function(destino){
@@ -30,6 +31,9 @@ angular.module('companion.landing', ['ui.router'])
 
 	$scope.encounterList = [];
 	$scope.formEnviado = false;
+	$scope.newClient = {}
+	$scope.loadingOffers = true;
+	$scope.loadingChefs = true;
 
 	Auth.$signInAnonymously().then(function(firebaseUser) {
 		console.log("Signed in as:", firebaseUser.uid);
@@ -37,6 +41,7 @@ angular.module('companion.landing', ['ui.router'])
 		var arrayMesas = $firebaseArray(refMesas);
 		arrayMesas.$loaded().then(function(){
 			$scope.mesasList = arrayMesas;
+			$scope.loadingOffers = false;
 			$('.parallax').parallax();
 		})
 
@@ -53,12 +58,33 @@ angular.module('companion.landing', ['ui.router'])
 					$scope.topLunchefs.push(result)
 				})
 			}
+			$scope.loadingChefs = false;
 		})
 	}).catch(function(error) {
 	  console.error("Authentication failed:", error);
 	});
 
 	$scope.enviarForm = function(){
-		$scope.formEnviado = true;
+		if ($scope.newClient.email) {
+			var refNewClients = firebase.database().ref('admin/newClients').limitToLast(1);
+			var arrayNewClients = $firebaseArray(refNewClients);
+			arrayNewClients.$add($scope.newClient).then(function(){
+				//$scope.formEnviado = true;
+				$('#modalForm').modal('open');
+			})
+		}
 	}
+
+    $scope.gotoAnchor = function(x) {
+      var newHash = 'anchor' + x;
+      if ($location.hash() !== newHash) {
+        // set the $location.hash to `newHash` and
+        // $anchorScroll will automatically scroll to it
+        $location.hash('anchor' + x);
+      } else {
+        // call $anchorScroll() explicitly,
+        // since $location.hash hasn't changed
+        $anchorScroll();
+      }
+    };
 }])
