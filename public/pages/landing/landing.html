@@ -90,27 +90,29 @@
     </div>
   </div>
 
-  <div id="anchorOfertas" class="section centeredBckImg" style="background-image: url('assets/lunchefBck2.jpg');">
+  <!-- <div id="anchorOfertas" class="section centeredBckImg" style="background-image: url('assets/lunchefBck2.jpg');">
+   -->
+  <div class="section" id="anchorOfertas">
     <div class="container" style="padding-top: 60px">
-      <h4 class="center white-text"><span class="avenirbold">LO MEJOR</span> DEL MES</h4>
+      <h4 class="center light-blue-text"><span class="avenirbold">OFERTAS</span> DEL MES</h4>
       <div class="container"><h5 class="center black-text">A continuación podrás disfrutar de las mejores ofertas gastronómicas que <span class="avenirbold">LUNCHERA</span> tiene en este mes.</h5></div>
       <div ng-show="!loadingOffers">
         <div class="row">
-          <div class="col m3 l3 light-blue z-depth-2" ng-repeat="mesa in mesasList" style="margin-right: 20px; margin-left: 20px">
+          <div class="col m3 l3 light-blue mycol" ng-repeat="mesa in mesasList">
             <div class="row" style="margin-bottom: 0px">
-              <div class="listItemImg" ng-style="{'background-image':'url('+mesa.coverImg+')'}" ></div>
-            </div>
-            
-            <div class=" row white-text" style="margin: 20px">
-              <h6 class="black-text avenirblack">{{mesa.name.toUpperCase()}}</h6>
-              <p class="avenir miP">{{adminserv.interpretDate(mesa.date)}}</p>
-              <p class="avenir miP">{{mesa.place}}</p>
-              <p class="avenir miP"> De {{mesa.startingAt}} a {{mesa.endingAt}}</p>
-              <p class="avenirbold miP">Para {{mesa.maxPlayers}} personas</p>
-            </div>
-            <div class="row center-align">
-              <a class="waves-effect waves-light btn black avenir" ng-href="#!/mesa/{{mesa.country}}/{{mesa.$id}}">Ver detalles</a>
-              <!-- <a class="waves-effect waves-light btn light-blue avenir">Ver detalles</a> -->
+              <div class="listItemImg" ng-style="{'background-image':'url('+mesa.coverImg+')'}" style="position: relative;" >
+                <div class="listItemDesc white-text" style="padding: 20px">
+                  <h6 class="light-blue-text avenirblack">{{mesa.name.toUpperCase()}}</h6>
+                  <p class="avenir miP">{{adminserv.interpretDate(mesa.date)}}</p>
+                  <p class="avenir miP">{{mesa.place}}</p>
+                  <p class="avenir miP"> De {{mesa.startingAt}} a {{mesa.endingAt}}</p>
+                  <p class="avenirbold miP">Para {{mesa.maxGuests}} personas</p>
+                  <div class="row center-align">
+                    <a class="waves-effect waves-light btn-flat avenir white-text" ng-href="#!/mesa/{{mesa.country}}/{{mesa.$id}}">Ver detalles</a>
+                    <!-- <a class="waves-effect waves-light btn light-blue avenir">Ver detalles</a> -->
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -149,7 +151,7 @@
             <p class="avenir miP">{{adminserv.interpretDate(mesa.date)}}</p>
             <p class="avenir miP">En {{mesa.place}}</p>
             <p class="avenir miP"> De {{mesa.startingAt}} a {{mesa.endingAt}}</p>
-            <p class="avenirbold miP">Para {{mesa.maxPlayers}} personas</p>
+            <p class="avenirbold miP">Para {{mesa.maxGuests}} personas</p>
           </div>
           <div class="row center-align">
             <a class="waves-effect waves-light btn light-blue avenir" ng-href="#!/mesa/{{mesa.country}}/{{mesa.$id}}">Ver detalles 2</a>

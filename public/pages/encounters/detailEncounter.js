@@ -50,7 +50,7 @@ angular.module('companion.detailEncounter', ['ui.router'])
 			if (!$scope.thisMesa) {
 				$state.go('landing') //debería crear un página vacia que muestre que ese encuentro no existe
 			}
-			var refChef = firebase.database().ref('chefs/'+$scope.thisMesa.admin);
+			var refChef = firebase.database().ref('chefs/'+$scope.thisMesa.chef);
 			var objChef = $firebaseObject(refChef);
 			objChef.$loaded().then(function(){
 				$scope.chef = objChef;

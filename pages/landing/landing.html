@@ -92,7 +92,7 @@
 
   <!-- <div id="anchorOfertas" class="section centeredBckImg" style="background-image: url('assets/lunchefBck2.jpg');">
    -->
-  <div class="section" id="anchorOfertas">
+  <div class="section hide-on-small-only" id="anchorOfertas" >
     <div class="container" style="padding-top: 60px">
       <h4 class="center light-blue-text"><span class="avenirbold">OFERTAS</span> DEL MES</h4>
       <div class="container"><h5 class="center black-text">A continuación podrás disfrutar de las mejores ofertas gastronómicas que <span class="avenirbold">LUNCHERA</span> tiene en este mes.</h5></div>
@@ -101,12 +101,14 @@
           <div class="col m3 l3 light-blue mycol" ng-repeat="mesa in mesasList">
             <div class="row" style="margin-bottom: 0px">
               <div class="listItemImg" ng-style="{'background-image':'url('+mesa.coverImg+')'}" style="position: relative;" >
+                <img src="assets/pocoscupos.png" style="width: 70%;" ng-if="thisMesa.status=='pocoscupos'"/>
+                <img src="assets/soldout.png" style="width: 70%;" ng-if="thisMesa.status=='soldout'"/>
                 <div class="listItemDesc white-text" style="padding: 20px">
                   <h6 class="light-blue-text avenirblack">{{mesa.name.toUpperCase()}}</h6>
                   <p class="avenir miP">{{adminserv.interpretDate(mesa.date)}}</p>
-                  <p class="avenir miP">{{mesa.place}}</p>
+                  <p class="avenir miP">{{mesa.cost}} COP/puesto</p>
                   <p class="avenir miP"> De {{mesa.startingAt}} a {{mesa.endingAt}}</p>
-                  <p class="avenirbold miP">Para {{mesa.maxPlayers}} personas</p>
+                  <p class="avenirbold miP">Para {{mesa.maxGuests}} personas</p>
                   <div class="row center-align">
                     <a class="waves-effect waves-light btn-flat avenir white-text" ng-href="#!/mesa/{{mesa.country}}/{{mesa.$id}}">Ver detalles</a>
                     <!-- <a class="waves-effect waves-light btn light-blue avenir">Ver detalles</a> -->
@@ -118,7 +120,7 @@
         </div>
         <div class="row center">
           <div class="col m12 s12">
-            <a class="waves-effect waves-light btn green accent-3" href="https://api.whatsapp.com/send?phone=573187059535&text=Hola!%20Quisiera%20hacer%20parte%20de%20LunchEra" target="_blank"><i class="fa fa-whatsapp fa-2x right"></i>RESERVA <span class="avenirbold">AHORA</span></a>
+            <a class="waves-effect waves-light btn green accent-3" href="https://api.whatsapp.com/send?phone=573053916281&text=Hola!%20Quisiera%20hacer%20parte%20de%20LunchEra" target="_blank"><i class="fa fa-whatsapp fa-2x right"></i>RESERVA <span class="avenirbold">AHORA</span></a>
           </div>
         </div>
       </div>
@@ -138,7 +140,7 @@
     </div>
   </div>
 
-  <div class="section hide-on-med-and-up" style="background-image: url('assets/lunchefBck2.jpg');">
+  <div class="section hide-on-med-and-up" ">
     <div class="container">
       <div class="row">
         <div class="col s12 black z-depth-2" ng-repeat="mesa in mesasList" style=" margin-bottom: 20px;">
@@ -151,10 +153,10 @@
             <p class="avenir miP">{{adminserv.interpretDate(mesa.date)}}</p>
             <p class="avenir miP">En {{mesa.place}}</p>
             <p class="avenir miP"> De {{mesa.startingAt}} a {{mesa.endingAt}}</p>
-            <p class="avenirbold miP">Para {{mesa.maxPlayers}} personas</p>
+            <p class="avenirbold miP">Para {{mesa.maxGuests}} personas</p>
           </div>
           <div class="row center-align">
-            <a class="waves-effect waves-light btn light-blue avenir" ng-href="#!/mesa/{{mesa.country}}/{{mesa.$id}}">Ver detalles 2</a>
+            <a class="waves-effect waves-light btn light-blue avenir" ng-href="#!/mesa/{{mesa.country}}/{{mesa.$id}}">Ver detalles </a>
             <!-- <a class="waves-effect waves-light btn light-blue avenir">Ver detalles</a> -->
           </div>
         </div>

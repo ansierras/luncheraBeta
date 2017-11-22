@@ -18,9 +18,28 @@
 			
 		</div>
 		<div class="row">
-			<div class="col m6">
+			<div class="col m6" style="position: relative;">
+				<img src="assets/pocoscupos.png" style="width: 50%; position:absolute;" ng-if="thisMesa.status=='pocoscupos'"/>
+				<img src="assets/soldout.png" style="width: 50%; position:absolute;" ng-if="thisMesa.status=='soldout'"/>
 				<img ng-src="{{thisMesa.coverImg}}" style="width: 100%">
+				
+				<div class="col m12 white z-depth-1" style="color: #4a4a4a; padding: 30px; margin-bottom: 10px">
+					<div class="row">
+						<h5>LunChef</h5>
+						<div class="divider" style="margin-bottom: 10px"></div>
+						<div class="col s2">
+							<img src="./assets/default-avatar.png" ng-src="{{chef.photoUrl}}" class="circle z-depth-2 responsive-img">
+						</div>
+						<div class="col s10">
+							<p class="grey-text text-darken-4">
+								{{chef.name}} {{chef.lastName}}
+							</p>
+							<span class="grey-text text-darken-1">{{chef.description}}</span>
+						</div>
+					</div>
+				</div>
 			</div>
+
 			<div class="col m6">
 				<div class="row">
 					<div class="col m12 white z-depth-1" style="color: #4a4a4a; padding: 30px; margin-bottom: 10px">
@@ -42,10 +61,17 @@
 						<div class="row">
 							<div class="col m1">
 								<i class="material-icons left">access_time</i>
-								
 							</div>
 							<div class="col m10">
 								de {{thisMesa.startingAt}} a {{thisMesa.endingAt}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m1">
+								<i class="material-icons">attach_money</i>
+							</div>
+							<div class="col m10">
+								{{thisMesa.cost}} COP cada puesto
 							</div>
 						</div>
 						<div class="row">
@@ -54,7 +80,7 @@
 								
 							</div>
 							<div class="col m10">
-								puestos disponibles: {{thisMesa.availableSeats.length}} de {{thisMesa.maxPlayers}}
+								puestos disponibles: {{thisMesa.availableSeats}} de {{thisMesa.maxGuests}}
 							</div>
 						</div>
 						<div class="row">
@@ -69,23 +95,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="col m12 white z-depth-1" style="color: #4a4a4a; padding: 30px; margin-bottom: 10px">
-						<div class="row">
-							<h5>LunChef</h5>
-							<div class="divider" style="margin-bottom: 10px"></div>
-							<div class="col s2">
-								<img src="./assets/default-avatar.png" ng-src="{{chef.photoUrl}}" class="circle z-depth-2 responsive-img">
-							</div>
-							<div class="col s10">
-								<p class="grey-text text-darken-4">
-									{{chef.name}} {{chef.lastName}}
-								</p>
-								<span class="grey-text text-darken-1">{{chef.description}}</span>
-							</div>
-						</div>
-					</div>
+					
 					<div class="col m12">
-						<a style="width: 100%" class="waves-effect waves-light btn green accent-3" href="https://api.whatsapp.com/send?phone=573187059535&text=Hola!%20Quisiera%20hacer%20una%20reserva" target="_blank"><i class="fa fa-whatsapp fa-2x right"></i>RESERVA <span class="avenirbold">AHORA</span></a>
+						<a style="width: 100%" class="waves-effect waves-light btn green accent-3" href="https://api.whatsapp.com/send?phone=573053916281&text=Hola!%20Quisiera%20hacer%20una%20reserva" target="_blank"><i class="fa fa-whatsapp fa-2x right"></i>RESERVA <span class="avenirbold">AHORA</span></a>
 					</div>
 				</div>
 			</div>
